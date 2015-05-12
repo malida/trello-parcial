@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "vendor/modernizr" %>
+  <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+<body>
+  <div class="contain-to-grid">
+    <nav class="top-bar" data-topbar>
+      <ul class="title-area">
+        <li class="name">
+          <h1>
+            <%= link_to 'Trello-Parcial', root_path %>
+          </h1>
+        </li>
+        <li class="toggle-topbar menu-icon">
+          <a href="#"><span>Menu</span></a>
+        </li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="left">
+          <li class="divider">
+          </li>
+          <li>
+            <%= link_to t('Users'), users_path %>          </li>
+          </ul>
+          <ul class="right">
+            <% if user_signed_in? %>
+            <li class="avatar">
+              <% if current_user.profile.file? %>
+              <%= image_tag current_user.profile.url(:mini), class: "round" %>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to current_user.name, edit_user_registration_path %>
+            </li>
+            <li>
+              <%= link_to t('Sign Out'), destroy_user_session_path, method: :delete %>
+            </li>
+            <% else %>
+            <li class="active">
+              <%= link_to t('Sign Up'), new_user_registration_path %>
+            </li>
+            <li>
+              <%= link_to t('Sign In'), new_user_session_path %>
+            </li>
+            <% end %>
+          </ul>        
+
+        </section>
+      </nav>
+    </div>
+    <br>
+
+    <div class="row">
+      <div class="columns large-12">
+
+        <% flash.each do |type, message| %>
+        <div data-alert class="alert-box radius <%= flass_class type %>">
+          <%= message %>
+          <a href="#" class="close">&times;</a>
+        </div>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
+  </body>
+  </html>
