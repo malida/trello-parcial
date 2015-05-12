@@ -7,7 +7,7 @@ class Task < ActiveRecord::Base
 	validates_presence_of :title
 	#Fechas
   	def self.by_person(user_id)
-    	where("user_id = :person_id OR responsable_id = :person_id", person_id: user_id)
+    	where("user_id = :person_id OR responsable_id = :person_id", person_id: responsable_id)
   	end 
 
 end
