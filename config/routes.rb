@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :tasks
   resources :users
   root :to => 'tasks#index'
-
+  
 resources :users do
   resources :tasks
 end
