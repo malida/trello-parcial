@@ -4,9 +4,7 @@ Rails.application.routes.draw do
   resources :users
   root :to => 'tasks#index'
   
-resources :users do
-  resources :tasks
-end
+  get '/list_tasks' => 'tasks#list_tasks'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

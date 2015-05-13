@@ -11,7 +11,14 @@ class TasksController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @tasks}
     end
-      
+    
+  end
+
+  respond_to :html
+  
+  def list_tasks
+    @tasks = Task.all
+    respond_with(@tasks)
   end
 
   # GET /tasks/1
