@@ -9,5 +9,11 @@ class Task < ActiveRecord::Base
   	def self.by_person(user_id)
     	where("user_id = :person_id OR responsable_id = :person_id", person_id: responsable_id)
   	end 
+	validate :valid_date
 
+	def valid_date
+	  if (start_time && end_time) && (end_time < start_time)
+	    errors.add(:end_time, "must be later than Start Time")
+	  end
+	end
 end
