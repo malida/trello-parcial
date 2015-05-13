@@ -2,13 +2,12 @@
 
 <h1>Listing Tasks</h1>
   <div class="row">
-    <div class="columns large-2">
+    <div class="columns large-3">
       <fieldset>
 <table>
   <thead>
     <tr>
       <th>Title</th>
-      <th>Description</th>
       <th>Hours</th>
       <th>Start time</th>
       <th>End time</th>
@@ -24,7 +23,6 @@
         <% if task.check==false %>    
       <tr>
         <td><%= task.title %></td>
-        <td><%= task.description %></td>
         <td><%= task.hours %></td>
         <td><%= task.start_time %></td>
         <td><%= task.end_time %></td>
@@ -42,13 +40,12 @@
       </fieldset>
     </div>
 
-    <div class="columns large-2">
+    <div class="columns large-3">
       <fieldset>
  <table>
   <thead>
     <tr>
       <th>Title</th>
-      <th>Description</th>
       <th>Hours</th>
       <th>Start time</th>
       <th>End time</th>
@@ -64,7 +61,6 @@
         <% if task.check==true %>    
       <tr>
         <td><%= task.title %></td>
-        <td><%= task.description %></td>
         <td><%= task.hours %></td>
         <td><%= task.start_time %></td>
         <td><%= task.end_time %></td>
