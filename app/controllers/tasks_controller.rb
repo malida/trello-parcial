@@ -7,11 +7,6 @@ class TasksController < ApplicationController
   def index
     @tasks = Task.all.order(:end_time => :asc)
 
-    if params[:id]
-      @user = User.where(:id => params[:id]).first
-      @tasks = @user.tasks
-    end
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @tasks}
