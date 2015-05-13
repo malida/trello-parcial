@@ -6,6 +6,17 @@ class TasksController < ApplicationController
   # GET /tasks.json
   def index
     @tasks = Task.all.order(:end_time => :asc)
+
+    if params[:id]
+      @user = User.where(:id => params[:id]).first
+      @tasks = @user.tasks
+    end
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @tasks}
+    end
+      
   end
 
   # GET /tasks/1

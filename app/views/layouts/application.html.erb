@@ -31,8 +31,11 @@
           </li>
           <li>
             <%= link_to t('Users'), users_path %>          </li>
-          <li>
-            <%= link_to t('Mis tareas'), users_path %>          </li>
+            <%if user_signed_in? %>
+            <li>
+            <%= link_to t('Mis tareas'), current_user , method: :index %>
+            </li>
+            <% end %>
           </ul>
           <ul class="right">
             <% if user_signed_in? %>
